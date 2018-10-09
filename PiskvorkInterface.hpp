@@ -34,7 +34,7 @@ public:
 
     // responses
     static void    unknown();
-    static void    error();
+    static void    error(std::string &);
     static void    debug(std::string &);
 
     void    waitCommand();

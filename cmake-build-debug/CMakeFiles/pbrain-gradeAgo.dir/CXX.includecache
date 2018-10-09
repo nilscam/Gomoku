@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/nils/Documents/Epitech/Gomoku/Gomoku/PiskvorkInterface.cpp
+cstring
+-
+PiskvorkInterface.hpp
+C:/Users/nils/Documents/Epitech/Gomoku/Gomoku/PiskvorkInterface.hpp
+
+C:/Users/nils/Documents/Epitech/Gomoku/Gomoku/PiskvorkInterface.hpp
+iterator
+-
+iostream
+-
+sstream
+-
+map
+-
+algo/Board.hpp
+C:/Users/nils/Documents/Epitech/Gomoku/Gomoku/algo/Board.hpp
+
+C:/Users/nils/Documents/Epitech/Gomoku/Gomoku/algo/Board.hpp
+string
+-
+vector
+-
+

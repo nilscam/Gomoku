@@ -28,13 +28,18 @@ void PiskvorkInterface::mainLoop() {
         waitCommand();
         std::string ins = command.front();
 
-        ((this)->*callInstruction[ins])();
+        try {
+            ((this)->*callInstruction[ins])();
+        } catch (std::exception &e) {
+            std::cout << "UNKNOWN" << std::endl;
+        }
     }
 }
 
 void PiskvorkInterface::start() {
     // set board size
     boardSize = std::stoi(command[1]);
+    std::cout << "OK" << std::endl;
 }
 
 void PiskvorkInterface::turn() {
@@ -53,7 +58,7 @@ void PiskvorkInterface::board() {
 }
 
 void PiskvorkInterface::info() {
-    unknown();
+    // do not print anything
 }
 
 void PiskvorkInterface::end() {
@@ -65,11 +70,11 @@ void PiskvorkInterface::about() {
 }
 
 void PiskvorkInterface::unknown() {
-    std::cout << "UNKNOWN - INSTRUCTION NOT IMPLEMENTED" << std::endl;
+    std::cout << "UNKNOWN" << std::endl;
 }
 
-void PiskvorkInterface::error() {
-    std::cout << "ERROR - ERROR WHILE PROCESSING" << std::endl;
+void PiskvorkInterface::error(std::string &s) {
+    std::cout << "ERROR - " << s << std::endl;
 }
 
 void PiskvorkInterface::debug(std::string &s) {
