@@ -1,11 +1,10 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/pbrain-gradeAgo.dir/main.cpp.obj"
-  "CMakeFiles/pbrain-gradeAgo.dir/algo/Board.cpp.obj"
-  "CMakeFiles/pbrain-gradeAgo.dir/PiskvorkInterface.cpp.obj"
+  "CMakeFiles/pbrain-gradeAgo.dir/main.cpp.o"
+  "CMakeFiles/pbrain-gradeAgo.dir/algo/Board.cpp.o"
+  "CMakeFiles/pbrain-gradeAgo.dir/PiskvorkInterface.cpp.o"
+  "CMakeFiles/pbrain-gradeAgo.dir/algo/TreeNode.cpp.o"
   "pbrain-gradeAgo.pdb"
-  "pbrain-gradeAgo.exe"
-  "pbrain-gradeAgo.exe.manifest"
-  "libpbrain-gradeAgo.dll.a"
+  "pbrain-gradeAgo"
 )
 
 # Per-language clean rules from dependency scanning.

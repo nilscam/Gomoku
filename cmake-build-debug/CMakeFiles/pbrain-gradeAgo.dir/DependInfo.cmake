@@ -4,9 +4,10 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "C:/Users/nils/Documents/Epitech/Gomoku/Gomoku/PiskvorkInterface.cpp" "C:/Users/nils/Documents/Epitech/Gomoku/Gomoku/cmake-build-debug/CMakeFiles/pbrain-gradeAgo.dir/PiskvorkInterface.cpp.obj"
-  "C:/Users/nils/Documents/Epitech/Gomoku/Gomoku/algo/Board.cpp" "C:/Users/nils/Documents/Epitech/Gomoku/Gomoku/cmake-build-debug/CMakeFiles/pbrain-gradeAgo.dir/algo/Board.cpp.obj"
-  "C:/Users/nils/Documents/Epitech/Gomoku/Gomoku/main.cpp" "C:/Users/nils/Documents/Epitech/Gomoku/Gomoku/cmake-build-debug/CMakeFiles/pbrain-gradeAgo.dir/main.cpp.obj"
+  "/home/nils/Documents/projets/Gomoku/PiskvorkInterface.cpp" "/home/nils/Documents/projets/Gomoku/cmake-build-debug/CMakeFiles/pbrain-gradeAgo.dir/PiskvorkInterface.cpp.o"
+  "/home/nils/Documents/projets/Gomoku/algo/Board.cpp" "/home/nils/Documents/projets/Gomoku/cmake-build-debug/CMakeFiles/pbrain-gradeAgo.dir/algo/Board.cpp.o"
+  "/home/nils/Documents/projets/Gomoku/algo/TreeNode.cpp" "/home/nils/Documents/projets/Gomoku/cmake-build-debug/CMakeFiles/pbrain-gradeAgo.dir/algo/TreeNode.cpp.o"
+  "/home/nils/Documents/projets/Gomoku/main.cpp" "/home/nils/Documents/projets/Gomoku/cmake-build-debug/CMakeFiles/pbrain-gradeAgo.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

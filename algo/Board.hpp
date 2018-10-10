@@ -18,25 +18,30 @@ inline char PIECE_ASCII(char x) { return (x == 0 ? '.' : x == 1 ? 'O' : 'X'); }
 #define WIDTH 19
 #define HEIGHT 19
 #define FULLSIZE (WIDTH * HEIGHT)
+#define COMPRESSED_SIZE (FULLSIZE / 4 + 1)
 #define POS(y, x) (y * HEIGHT + x)
 
 class Board {
 public:
 
     Board();
+    Board(const Board &) = default;
     ~Board();
 
     void    emptyBoard();
 
-    static char    *compressPosition();
-    void    loadBoardFromHistory();
-    void    loadBoardFromPosition();
+    //static char    *compressPosition();
+
+    void    compress();
+    void    decompress();
 
     char  &operator[](int);
     friend std::ostream &operator<<(std::ostream &, const Board &);
 
 private:
-    std::vector<char>   plate;
+    bool    compressed = false;
+
+    std::string   plate;
 };
 
 #endif //IA_BOARD_H

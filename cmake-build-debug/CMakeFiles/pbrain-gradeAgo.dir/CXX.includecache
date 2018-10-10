@@ -6,25 +6,13 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/nils/Documents/Epitech/Gomoku/Gomoku/PiskvorkInterface.cpp
-cstring
--
-PiskvorkInterface.hpp
-C:/Users/nils/Documents/Epitech/Gomoku/Gomoku/PiskvorkInterface.hpp
-
-C:/Users/nils/Documents/Epitech/Gomoku/Gomoku/PiskvorkInterface.hpp
-iterator
--
+/home/nils/Documents/projets/Gomoku/algo/Board.cpp
 iostream
 -
-sstream
--
-map
--
-algo/Board.hpp
-C:/Users/nils/Documents/Epitech/Gomoku/Gomoku/algo/Board.hpp
+Board.hpp
+/home/nils/Documents/projets/Gomoku/algo/Board.hpp
 
-C:/Users/nils/Documents/Epitech/Gomoku/Gomoku/algo/Board.hpp
+/home/nils/Documents/projets/Gomoku/algo/Board.hpp
 string
 -
 vector
