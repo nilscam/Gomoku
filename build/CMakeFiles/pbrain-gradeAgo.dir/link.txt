@@ -1,1 +1,0 @@
-/usr/bin/c++    -rdynamic CMakeFiles/pbrain-gradeAgo.dir/main.cpp.o CMakeFiles/pbrain-gradeAgo.dir/algo/Board.cpp.o CMakeFiles/pbrain-gradeAgo.dir/PiskvorkInterface.cpp.o  -o pbrain-gradeAgo 
