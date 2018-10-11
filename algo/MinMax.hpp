@@ -12,12 +12,11 @@
 class MinMax {
 public:
     MinMax() = default;
-    MinMax(const TreeNode<Board> &tree);
 
     // we propagate all the moves on the tree
-    void    deepSimulation(TreeNode<Board> &);
+    void    deepSimulation(TreeNode<Board> *);
     // we evaluate nodes and process backpropagation
-    void    retroPropagation(TreeNode<Board> &);
+    void    retroPropagation(TreeNode<Board> *);
 
     void    propagation();
 

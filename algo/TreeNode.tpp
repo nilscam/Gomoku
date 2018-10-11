@@ -14,27 +14,33 @@ class TreeNode {
 public:
     TreeNode() = default;
     explicit TreeNode(Data);
-    ~TreeNode() = default;
+    ~TreeNode();
 
-    Data getData() const;
+    Data &getData();
+
     void setData(Data);
-    std::vector<std::shared_ptr<TreeNode<Data>>> &getChildrens();
+    std::vector<TreeNode<Data> *> &getChildrens();
 
     void    addChildren(Data);
     void    print();
 
     float   value;
-
 private:
     Data    _data;
-    std::vector<std::shared_ptr<TreeNode>> childrens;
+    std::vector<TreeNode *> childrens;
 };
 
 template<typename Data>
 TreeNode<Data>::TreeNode(Data data) : _data(data) {}
 
 template<typename Data>
-Data TreeNode<Data>::getData() const {
+TreeNode<Data>::~TreeNode() {
+    for (auto i : childrens)
+        delete i;
+}
+
+template<typename Data>
+Data &TreeNode<Data>::getData() {
     return _data;
 }
 
@@ -45,7 +51,7 @@ void TreeNode<Data>::setData(Data data) {
 
 template<typename Data>
 void TreeNode<Data>::addChildren(Data data) {
-    childrens.push_back(std::make_shared<TreeNode>(data));
+    childrens.push_back(new TreeNode(data));
 }
 
 template<typename Data>
@@ -55,8 +61,9 @@ void TreeNode<Data>::print() {
 }
 
 template<typename Data>
-std::vector<std::shared_ptr<TreeNode<Data>>> &TreeNode<Data>::getChildrens() {
+std::vector<TreeNode<Data> *> &TreeNode<Data>::getChildrens() {
     return childrens;
 }
+
 
 #endif //IA_TREENODE_HPP

@@ -21,12 +21,11 @@ int main() {
 
     node.print();
     */
-
     MinMax  m;
 
     std::cout << "Minmax " << sizeof(MinMax) << std::endl;
     std::cout << "Board " << sizeof(Board) << std::endl;
-    std::cout << "TreeNode " << sizeof(TreeNode<char>) << std::endl;
+    std::cout << "TreeNode " << sizeof(TreeNode<Board>) << std::endl;
 
     m.propagation();
     return 0;

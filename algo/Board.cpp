@@ -5,8 +5,7 @@
 #include <iostream>
 #include "Board.hpp"
 
-Board::Board() : plate(FULLSIZE, 0) {
-}
+Board::Board() : plate(FULLSIZE, 0) {}
 
 Board::~Board() = default;
 
@@ -20,6 +19,7 @@ void Board::compress() {
         std::string old(plate);
 
         plate.resize(COMPRESSED_SIZE);
+        plate.reserve(COMPRESSED_SIZE);
         for (int i = 0; i < COMPRESSED_SIZE - 1; i++)
             plate[i] = ((old[i * 4] << 6) + (old[i * 4 + 1] << 4) + (old[i * 4 + 2] << 2) + (old[i * 4 + 3]));
         plate[COMPRESSED_SIZE - 1] = old[FULLSIZE - 1] << 6;
@@ -41,9 +41,13 @@ void Board::decompress() {
 std::vector<short> Board::getPossiblesMoves() {
     decompress();
     std::vector<short>     moves;
+
+    moves.reserve(361);
     for (int i = 0; i < FULLSIZE; i++)
         if (plate[i] == EMPTY)
             moves.push_back(i);
+    moves.reserve(moves.size());
+    compress();
     return moves;
 }
 
