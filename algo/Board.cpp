@@ -38,6 +38,33 @@ void Board::decompress() {
     }
 }
 
+void Board::play(short pos, char player) {
+    auto y = static_cast<short>(pos / HEIGHT);
+    auto x = static_cast<short>(pos % WIDTH);
+
+    // y
+    if (y - 2 < playingZone[0]) {
+        playingZone[2] += static_cast<short>(playingZone[0] - (y - 2));
+        playingZone[0] = static_cast<short>(y - 2 < playingZone[0] ? (y - 2 < 0 ? 0 : y - 2) : playingZone[0]);
+    } else if (y + 2 > playingZone[0] + playingZone[2]) {
+        playingZone[2] += ((y + 2) - (playingZone[0] + playingZone[2]));
+    }
+
+    // x
+    if (x - 2 < playingZone[1]) {
+        playingZone[3] += static_cast<short>(playingZone[1] - (x - 2));
+        playingZone[1] = static_cast<short>(x - 2 < playingZone[1] ? (x - 2 < 0 ? 0 : x - 2) : playingZone[1]);
+    } else if (x + 2 > playingZone[1] + playingZone[3]) {
+        playingZone[3] += ((x + 2) - (playingZone[1] + playingZone[3]));
+    }
+
+    if (compressed) {
+        playOnCompressed(pos, player);
+    } else {
+        plate[pos] = player;
+    }
+}
+
 std::vector<short> Board::getPossiblesMoves() {
     decompress();
     std::vector<short>     moves;
@@ -67,6 +94,7 @@ std::ostream &operator<<(std::ostream &os, const Board &board) {
             }
             os << std::endl;
         }
+        os << "Playing zone : [" << board.playingZone[0] << "," << board.playingZone[1] << "] [" << board.playingZone[2] << "," << board.playingZone[3] << "]" << std::endl;
         return os << std::endl;
     } else {
         Board   copy(board);
@@ -77,6 +105,18 @@ std::ostream &operator<<(std::ostream &os, const Board &board) {
 }
 
 void Board::playOnCompressed(short pos, char player) {
-    plate[pos / 4] ^= player << ((3 - (pos % 4)) * 2);
+    unsigned char filter = ((unsigned char)(16191 >> ((pos % 4)) * 2));
+    plate[pos / 4] = (player << ((3 - (pos % 4)) * 2)) | (plate[pos / 4] & filter);
+}
+
+void Board::initPlayingZone(short pos) {
+    auto y = static_cast<short>(pos / HEIGHT);
+    auto x = static_cast<short>(pos % WIDTH);
+
+    playingZone[0] = static_cast<short>(y - 2 < 0 ? 0 : y - 2);
+    playingZone[1] = static_cast<short>(x - 2 < 0 ? 0 : x - 2);
+
+    playingZone[2] -= y > 16 ? 21 - y : 0;
+    playingZone[3] -= x > 16 ? 21 - x : 0;
 }
 

@@ -13,10 +13,11 @@ void MinMax::deepSimulation(TreeNode<Board> *parent) {
         auto possiblesMoves = old.getPossiblesMoves();
 
         for (auto it : possiblesMoves) {
-            old.playOnCompressed(it, 1); //MIN OR MAX;
-            old.prevMove = it;
-            parent->addChildren(old);
-            old.playOnCompressed(it, 1);
+            auto copy = new TreeNode(old);
+
+            copy->getData().play(it, 1); // MIN OR MAX
+            copy->getData().prevMove = it;
+            parent->addChildren(copy);
         }
     } else {
         for (auto &child : childrens)
@@ -24,26 +25,36 @@ void MinMax::deepSimulation(TreeNode<Board> *parent) {
     }
 }
 
-void MinMax::retroPropagation(TreeNode<Board> *parent) {
+void MinMax::retroPropagation(TreeNode<Board> *parent, MINMAX target) {
     auto childrens = parent->getChildrens();
 
     if (childrens.empty()) {
         parent->value = evaluator.evaluate(parent->getData());
     } else {
-        float   max = 0.0;
-        for (auto &children : childrens) {
-            retroPropagation(children);
-            max = children->value > max ? children->value : max;
+        if (target == MIN) {
+            float   min = FLT_MIN;
+            for (auto &children : childrens) {
+                retroPropagation(children, MAX);
+                min = children->value < min ? children->value : min;
+            }
+            parent->value = min;
+        } else {
+            float   max = FLT_MAX;
+            for (auto &children : childrens) {
+                retroPropagation(children, MIN);
+                max = children->value > max ? children->value : max;
+            }
+            parent->value = max;
         }
-        parent->value = max;
     }
 }
 
 void MinMax::propagation() {
     deepSimulation(&tree);
-    deepSimulation(&tree);
 
-    retroPropagation(&tree);
-    return ;
+    retroPropagation(&tree, MAX);
+
+    for (auto child : tree.getChildrens())
+        std::cout << child->getData() << std::endl;
 }
 

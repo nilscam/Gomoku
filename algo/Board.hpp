@@ -33,7 +33,11 @@ public:
     void    compress();
     void    decompress();
 
+    // first move
+    void    initPlayingZone(short);
+
     void    playOnCompressed(short, char);
+    void    play(short, char);
 
     std::vector<short>    getPossiblesMoves();
     std::vector<short>    epurePossiblesMoves();
@@ -47,6 +51,9 @@ private:
     bool    compressed = false;
 
     std::string   plate;
+
+    // y, x, yl, xl
+    short   playingZone[4] = {-1, -1, 5, 5};
 };
 
 #endif //IA_BOARD_H

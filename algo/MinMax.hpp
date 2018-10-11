@@ -5,9 +5,15 @@
 #ifndef IA_MINMAX_HPP
 #define IA_MINMAX_HPP
 
+#include <cfloat>
+
 #include "Board.hpp"
 #include "TreeNode.tpp"
 #include "Evaluator.hpp"
+
+typedef char MINMAX;
+#define MIN 0
+#define MAX 1
 
 class MinMax {
 public:
@@ -16,7 +22,7 @@ public:
     // we propagate all the moves on the tree
     void    deepSimulation(TreeNode<Board> *);
     // we evaluate nodes and process backpropagation
-    void    retroPropagation(TreeNode<Board> *);
+    void    retroPropagation(TreeNode<Board> *, MINMAX);
 
     void    propagation();
 
