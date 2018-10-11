@@ -20,8 +20,9 @@ void Board::compress() {
         std::string old(plate);
 
         plate.resize(COMPRESSED_SIZE);
-        for (int i = 0; i < COMPRESSED_SIZE; i++)
+        for (int i = 0; i < COMPRESSED_SIZE - 1; i++)
             plate[i] = ((old[i * 4] << 6) + (old[i * 4 + 1] << 4) + (old[i * 4 + 2] << 2) + (old[i * 4 + 3]));
+        plate[COMPRESSED_SIZE - 1] = old[FULLSIZE - 1] << 6;
         compressed = true;
     }
 }
@@ -70,3 +71,8 @@ std::ostream &operator<<(std::ostream &os, const Board &board) {
         return os << copy;
     }
 }
+
+void Board::playOnCompressed(short pos, char player) {
+    plate[pos / 4] ^= player << ((3 - (pos % 4)) * 2);
+}
+

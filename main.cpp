@@ -28,8 +28,6 @@ int main() {
     std::cout << "Board " << sizeof(Board) << std::endl;
     std::cout << "TreeNode " << sizeof(TreeNode<char>) << std::endl;
 
-
-
     m.propagation();
     return 0;
 }

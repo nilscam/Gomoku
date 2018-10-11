@@ -33,6 +33,8 @@ public:
     void    compress();
     void    decompress();
 
+    void    playOnCompressed(short, char);
+
     std::vector<short>    getPossiblesMoves();
     std::vector<short>    epurePossiblesMoves();
 

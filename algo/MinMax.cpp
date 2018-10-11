@@ -12,13 +12,15 @@ void MinMax::deepSimulation(TreeNode<Board> &parent) {
     if (childrens.empty()) {
         // leaf
         Board   old(parent.getData());
+
         auto possiblesMoves = old.getPossiblesMoves();
+        old.compress();
 
         for (auto it : possiblesMoves) {
-            old[it] = 1;//MIN OR MAX;
+            old.playOnCompressed(it, 1); //MIN OR MAX;
             old.prevMove = it;
             parent.addChildren(old);
-            old[it] = 0;
+            old.playOnCompressed(it, 1);
         }
     } else {
         for (auto &child : childrens)
@@ -33,21 +35,29 @@ void MinMax::retroPropagation(TreeNode<Board> &parent) {
         parent.value = evaluator.evaluate(parent.getData());
     } else {
         float   max = 0.0;
+        for (int i = 0; i < childrens.size(); i++) {
+            retroPropagation(*childrens[i]);
+            max = childrens[i]->value > max ? childrens[i]->value : max;
+        }
+        /*
         for (auto &child : childrens) {
             retroPropagation(*child.get());
             max = child->value > max ? child->value : max;
         }
+         */
         parent.value = max;
     }
 }
 
 void MinMax::propagation() {
     deepSimulation(tree);
+    std::cout << "first deep done" << std::endl;
+
     retroPropagation(tree);
+    /*
 
     std::cout << tree.value << std::endl;
 
-    /*
     for (auto child : tree.getChildrens())
         std::cout << child->getData() << std::endl;
     */
