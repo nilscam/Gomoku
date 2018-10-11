@@ -23,7 +23,7 @@ public:
     void    addChildren(Data);
     void    print();
 
-    float   value = 0.0;
+    float   value;
 
 private:
     Data    _data;

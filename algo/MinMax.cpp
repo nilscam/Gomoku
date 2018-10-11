@@ -33,8 +33,10 @@ void MinMax::retroPropagation(TreeNode<Board> &parent) {
         parent.value = evaluator.evaluate(parent.getData());
     } else {
         float   max = 0.0;
-        for (auto &child : childrens)
+        for (auto &child : childrens) {
+            retroPropagation(*child.get());
             max = child->value > max ? child->value : max;
+        }
         parent.value = max;
     }
 }
@@ -44,7 +46,10 @@ void MinMax::propagation() {
     retroPropagation(tree);
 
     std::cout << tree.value << std::endl;
+
+    /*
     for (auto child : tree.getChildrens())
         std::cout << child->getData() << std::endl;
+    */
 }
 
