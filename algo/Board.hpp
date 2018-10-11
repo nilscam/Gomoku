@@ -30,13 +30,16 @@ public:
 
     void    emptyBoard();
 
-    //static char    *compressPosition();
-
     void    compress();
     void    decompress();
 
+    std::vector<short>    getPossiblesMoves();
+    std::vector<short>    epurePossiblesMoves();
+
     char  &operator[](int);
     friend std::ostream &operator<<(std::ostream &, const Board &);
+
+    short int     prevMove = -1;
 
 private:
     bool    compressed = false;

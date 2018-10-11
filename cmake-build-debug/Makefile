@@ -177,32 +177,59 @@ algo/Board.cpp.s:
 	$(MAKE) -f CMakeFiles/pbrain-gradeAgo.dir/build.make CMakeFiles/pbrain-gradeAgo.dir/algo/Board.cpp.s
 .PHONY : algo/Board.cpp.s
 
-algo/TreeNode.o: algo/TreeNode.cpp.o
+algo/Evaluator.o: algo/Evaluator.cpp.o
 
-.PHONY : algo/TreeNode.o
+.PHONY : algo/Evaluator.o
 
 # target to build an object file
-algo/TreeNode.cpp.o:
-	$(MAKE) -f CMakeFiles/pbrain-gradeAgo.dir/build.make CMakeFiles/pbrain-gradeAgo.dir/algo/TreeNode.cpp.o
-.PHONY : algo/TreeNode.cpp.o
+algo/Evaluator.cpp.o:
+	$(MAKE) -f CMakeFiles/pbrain-gradeAgo.dir/build.make CMakeFiles/pbrain-gradeAgo.dir/algo/Evaluator.cpp.o
+.PHONY : algo/Evaluator.cpp.o
 
-algo/TreeNode.i: algo/TreeNode.cpp.i
+algo/Evaluator.i: algo/Evaluator.cpp.i
 
-.PHONY : algo/TreeNode.i
+.PHONY : algo/Evaluator.i
 
 # target to preprocess a source file
-algo/TreeNode.cpp.i:
-	$(MAKE) -f CMakeFiles/pbrain-gradeAgo.dir/build.make CMakeFiles/pbrain-gradeAgo.dir/algo/TreeNode.cpp.i
-.PHONY : algo/TreeNode.cpp.i
+algo/Evaluator.cpp.i:
+	$(MAKE) -f CMakeFiles/pbrain-gradeAgo.dir/build.make CMakeFiles/pbrain-gradeAgo.dir/algo/Evaluator.cpp.i
+.PHONY : algo/Evaluator.cpp.i
 
-algo/TreeNode.s: algo/TreeNode.cpp.s
+algo/Evaluator.s: algo/Evaluator.cpp.s
 
-.PHONY : algo/TreeNode.s
+.PHONY : algo/Evaluator.s
 
 # target to generate assembly for a file
-algo/TreeNode.cpp.s:
-	$(MAKE) -f CMakeFiles/pbrain-gradeAgo.dir/build.make CMakeFiles/pbrain-gradeAgo.dir/algo/TreeNode.cpp.s
-.PHONY : algo/TreeNode.cpp.s
+algo/Evaluator.cpp.s:
+	$(MAKE) -f CMakeFiles/pbrain-gradeAgo.dir/build.make CMakeFiles/pbrain-gradeAgo.dir/algo/Evaluator.cpp.s
+.PHONY : algo/Evaluator.cpp.s
+
+algo/MinMax.o: algo/MinMax.cpp.o
+
+.PHONY : algo/MinMax.o
+
+# target to build an object file
+algo/MinMax.cpp.o:
+	$(MAKE) -f CMakeFiles/pbrain-gradeAgo.dir/build.make CMakeFiles/pbrain-gradeAgo.dir/algo/MinMax.cpp.o
+.PHONY : algo/MinMax.cpp.o
+
+algo/MinMax.i: algo/MinMax.cpp.i
+
+.PHONY : algo/MinMax.i
+
+# target to preprocess a source file
+algo/MinMax.cpp.i:
+	$(MAKE) -f CMakeFiles/pbrain-gradeAgo.dir/build.make CMakeFiles/pbrain-gradeAgo.dir/algo/MinMax.cpp.i
+.PHONY : algo/MinMax.cpp.i
+
+algo/MinMax.s: algo/MinMax.cpp.s
+
+.PHONY : algo/MinMax.s
+
+# target to generate assembly for a file
+algo/MinMax.cpp.s:
+	$(MAKE) -f CMakeFiles/pbrain-gradeAgo.dir/build.make CMakeFiles/pbrain-gradeAgo.dir/algo/MinMax.cpp.s
+.PHONY : algo/MinMax.cpp.s
 
 main.o: main.cpp.o
 
@@ -246,9 +273,12 @@ help:
 	@echo "... algo/Board.o"
 	@echo "... algo/Board.i"
 	@echo "... algo/Board.s"
-	@echo "... algo/TreeNode.o"
-	@echo "... algo/TreeNode.i"
-	@echo "... algo/TreeNode.s"
+	@echo "... algo/Evaluator.o"
+	@echo "... algo/Evaluator.i"
+	@echo "... algo/Evaluator.s"
+	@echo "... algo/MinMax.o"
+	@echo "... algo/MinMax.i"
+	@echo "... algo/MinMax.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

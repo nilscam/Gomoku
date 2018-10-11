@@ -96,25 +96,39 @@ CMakeFiles/pbrain-gradeAgo.dir/PiskvorkInterface.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pbrain-gradeAgo.dir/PiskvorkInterface.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nils/Documents/projets/Gomoku/PiskvorkInterface.cpp -o CMakeFiles/pbrain-gradeAgo.dir/PiskvorkInterface.cpp.s
 
-CMakeFiles/pbrain-gradeAgo.dir/algo/TreeNode.cpp.o: CMakeFiles/pbrain-gradeAgo.dir/flags.make
-CMakeFiles/pbrain-gradeAgo.dir/algo/TreeNode.cpp.o: ../algo/TreeNode.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nils/Documents/projets/Gomoku/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/pbrain-gradeAgo.dir/algo/TreeNode.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrain-gradeAgo.dir/algo/TreeNode.cpp.o -c /home/nils/Documents/projets/Gomoku/algo/TreeNode.cpp
+CMakeFiles/pbrain-gradeAgo.dir/algo/MinMax.cpp.o: CMakeFiles/pbrain-gradeAgo.dir/flags.make
+CMakeFiles/pbrain-gradeAgo.dir/algo/MinMax.cpp.o: ../algo/MinMax.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nils/Documents/projets/Gomoku/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/pbrain-gradeAgo.dir/algo/MinMax.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrain-gradeAgo.dir/algo/MinMax.cpp.o -c /home/nils/Documents/projets/Gomoku/algo/MinMax.cpp
 
-CMakeFiles/pbrain-gradeAgo.dir/algo/TreeNode.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/pbrain-gradeAgo.dir/algo/TreeNode.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/nils/Documents/projets/Gomoku/algo/TreeNode.cpp > CMakeFiles/pbrain-gradeAgo.dir/algo/TreeNode.cpp.i
+CMakeFiles/pbrain-gradeAgo.dir/algo/MinMax.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/pbrain-gradeAgo.dir/algo/MinMax.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/nils/Documents/projets/Gomoku/algo/MinMax.cpp > CMakeFiles/pbrain-gradeAgo.dir/algo/MinMax.cpp.i
 
-CMakeFiles/pbrain-gradeAgo.dir/algo/TreeNode.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pbrain-gradeAgo.dir/algo/TreeNode.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nils/Documents/projets/Gomoku/algo/TreeNode.cpp -o CMakeFiles/pbrain-gradeAgo.dir/algo/TreeNode.cpp.s
+CMakeFiles/pbrain-gradeAgo.dir/algo/MinMax.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pbrain-gradeAgo.dir/algo/MinMax.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nils/Documents/projets/Gomoku/algo/MinMax.cpp -o CMakeFiles/pbrain-gradeAgo.dir/algo/MinMax.cpp.s
+
+CMakeFiles/pbrain-gradeAgo.dir/algo/Evaluator.cpp.o: CMakeFiles/pbrain-gradeAgo.dir/flags.make
+CMakeFiles/pbrain-gradeAgo.dir/algo/Evaluator.cpp.o: ../algo/Evaluator.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nils/Documents/projets/Gomoku/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/pbrain-gradeAgo.dir/algo/Evaluator.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrain-gradeAgo.dir/algo/Evaluator.cpp.o -c /home/nils/Documents/projets/Gomoku/algo/Evaluator.cpp
+
+CMakeFiles/pbrain-gradeAgo.dir/algo/Evaluator.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/pbrain-gradeAgo.dir/algo/Evaluator.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/nils/Documents/projets/Gomoku/algo/Evaluator.cpp > CMakeFiles/pbrain-gradeAgo.dir/algo/Evaluator.cpp.i
+
+CMakeFiles/pbrain-gradeAgo.dir/algo/Evaluator.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pbrain-gradeAgo.dir/algo/Evaluator.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nils/Documents/projets/Gomoku/algo/Evaluator.cpp -o CMakeFiles/pbrain-gradeAgo.dir/algo/Evaluator.cpp.s
 
 # Object files for target pbrain-gradeAgo
 pbrain__gradeAgo_OBJECTS = \
 "CMakeFiles/pbrain-gradeAgo.dir/main.cpp.o" \
 "CMakeFiles/pbrain-gradeAgo.dir/algo/Board.cpp.o" \
 "CMakeFiles/pbrain-gradeAgo.dir/PiskvorkInterface.cpp.o" \
-"CMakeFiles/pbrain-gradeAgo.dir/algo/TreeNode.cpp.o"
+"CMakeFiles/pbrain-gradeAgo.dir/algo/MinMax.cpp.o" \
+"CMakeFiles/pbrain-gradeAgo.dir/algo/Evaluator.cpp.o"
 
 # External object files for target pbrain-gradeAgo
 pbrain__gradeAgo_EXTERNAL_OBJECTS =
@@ -122,10 +136,11 @@ pbrain__gradeAgo_EXTERNAL_OBJECTS =
 pbrain-gradeAgo: CMakeFiles/pbrain-gradeAgo.dir/main.cpp.o
 pbrain-gradeAgo: CMakeFiles/pbrain-gradeAgo.dir/algo/Board.cpp.o
 pbrain-gradeAgo: CMakeFiles/pbrain-gradeAgo.dir/PiskvorkInterface.cpp.o
-pbrain-gradeAgo: CMakeFiles/pbrain-gradeAgo.dir/algo/TreeNode.cpp.o
+pbrain-gradeAgo: CMakeFiles/pbrain-gradeAgo.dir/algo/MinMax.cpp.o
+pbrain-gradeAgo: CMakeFiles/pbrain-gradeAgo.dir/algo/Evaluator.cpp.o
 pbrain-gradeAgo: CMakeFiles/pbrain-gradeAgo.dir/build.make
 pbrain-gradeAgo: CMakeFiles/pbrain-gradeAgo.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/nils/Documents/projets/Gomoku/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable pbrain-gradeAgo"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/nils/Documents/projets/Gomoku/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable pbrain-gradeAgo"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/pbrain-gradeAgo.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

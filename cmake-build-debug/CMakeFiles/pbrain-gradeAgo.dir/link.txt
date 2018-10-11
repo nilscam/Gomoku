@@ -1,1 +1,1 @@
-/usr/bin/c++  -g  -rdynamic CMakeFiles/pbrain-gradeAgo.dir/main.cpp.o CMakeFiles/pbrain-gradeAgo.dir/algo/Board.cpp.o CMakeFiles/pbrain-gradeAgo.dir/PiskvorkInterface.cpp.o CMakeFiles/pbrain-gradeAgo.dir/algo/TreeNode.cpp.o  -o pbrain-gradeAgo 
+/usr/bin/c++  -g  -rdynamic CMakeFiles/pbrain-gradeAgo.dir/main.cpp.o CMakeFiles/pbrain-gradeAgo.dir/algo/Board.cpp.o CMakeFiles/pbrain-gradeAgo.dir/PiskvorkInterface.cpp.o CMakeFiles/pbrain-gradeAgo.dir/algo/MinMax.cpp.o CMakeFiles/pbrain-gradeAgo.dir/algo/Evaluator.cpp.o  -o pbrain-gradeAgo 

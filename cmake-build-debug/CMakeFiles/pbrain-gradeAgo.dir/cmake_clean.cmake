@@ -2,7 +2,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/pbrain-gradeAgo.dir/main.cpp.o"
   "CMakeFiles/pbrain-gradeAgo.dir/algo/Board.cpp.o"
   "CMakeFiles/pbrain-gradeAgo.dir/PiskvorkInterface.cpp.o"
-  "CMakeFiles/pbrain-gradeAgo.dir/algo/TreeNode.cpp.o"
+  "CMakeFiles/pbrain-gradeAgo.dir/algo/MinMax.cpp.o"
+  "CMakeFiles/pbrain-gradeAgo.dir/algo/Evaluator.cpp.o"
   "pbrain-gradeAgo.pdb"
   "pbrain-gradeAgo"
 )

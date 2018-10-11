@@ -8,10 +8,20 @@ CMakeFiles/pbrain-gradeAgo.dir/PiskvorkInterface.cpp.o
 CMakeFiles/pbrain-gradeAgo.dir/algo/Board.cpp.o
  /home/nils/Documents/projets/Gomoku/algo/Board.cpp
  /home/nils/Documents/projets/Gomoku/algo/Board.hpp
-CMakeFiles/pbrain-gradeAgo.dir/algo/TreeNode.cpp.o
- /home/nils/Documents/projets/Gomoku/algo/TreeNode.cpp
- /home/nils/Documents/projets/Gomoku/algo/TreeNode.hpp
+CMakeFiles/pbrain-gradeAgo.dir/algo/Evaluator.cpp.o
+ /home/nils/Documents/projets/Gomoku/algo/Board.hpp
+ /home/nils/Documents/projets/Gomoku/algo/Evaluator.cpp
+ /home/nils/Documents/projets/Gomoku/algo/Evaluator.hpp
+CMakeFiles/pbrain-gradeAgo.dir/algo/MinMax.cpp.o
+ /home/nils/Documents/projets/Gomoku/algo/Board.hpp
+ /home/nils/Documents/projets/Gomoku/algo/Evaluator.hpp
+ /home/nils/Documents/projets/Gomoku/algo/MinMax.cpp
+ /home/nils/Documents/projets/Gomoku/algo/MinMax.hpp
+ /home/nils/Documents/projets/Gomoku/algo/TreeNode.tpp
 CMakeFiles/pbrain-gradeAgo.dir/main.cpp.o
  /home/nils/Documents/projets/Gomoku/PiskvorkInterface.hpp
  /home/nils/Documents/projets/Gomoku/algo/Board.hpp
+ /home/nils/Documents/projets/Gomoku/algo/Evaluator.hpp
+ /home/nils/Documents/projets/Gomoku/algo/MinMax.hpp
+ /home/nils/Documents/projets/Gomoku/algo/TreeNode.tpp
  /home/nils/Documents/projets/Gomoku/main.cpp

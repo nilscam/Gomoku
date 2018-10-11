@@ -15,7 +15,6 @@ void Board::emptyBoard() {
         plate[i] = 0;
 }
 
-
 void Board::compress() {
     if (!compressed) {
         std::string old(plate);
@@ -38,6 +37,18 @@ void Board::decompress() {
     }
 }
 
+std::vector<short> Board::getPossiblesMoves() {
+    decompress();
+    std::vector<short>     moves;
+    for (int i = 0; i < FULLSIZE; i++)
+        if (plate[i] == EMPTY)
+            moves.push_back(i);
+    return moves;
+}
+
+std::vector<short> Board::epurePossiblesMoves() {
+    return std::vector<short>();
+}
 
 char &Board::operator[](int pos) {
     return plate[pos];

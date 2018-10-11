@@ -6,15 +6,33 @@
 
 #IncludeRegexTransform: 
 
-/home/nils/Documents/projets/Gomoku/algo/Board.cpp
-iostream
--
-Board.hpp
-/home/nils/Documents/projets/Gomoku/algo/Board.hpp
-
 /home/nils/Documents/projets/Gomoku/algo/Board.hpp
 string
 -
 vector
+-
+
+/home/nils/Documents/projets/Gomoku/algo/Evaluator.hpp
+Board.hpp
+/home/nils/Documents/projets/Gomoku/algo/Board.hpp
+
+/home/nils/Documents/projets/Gomoku/algo/MinMax.cpp
+MinMax.hpp
+/home/nils/Documents/projets/Gomoku/algo/MinMax.hpp
+
+/home/nils/Documents/projets/Gomoku/algo/MinMax.hpp
+Board.hpp
+/home/nils/Documents/projets/Gomoku/algo/Board.hpp
+TreeNode.tpp
+/home/nils/Documents/projets/Gomoku/algo/TreeNode.tpp
+Evaluator.hpp
+/home/nils/Documents/projets/Gomoku/algo/Evaluator.hpp
+
+/home/nils/Documents/projets/Gomoku/algo/TreeNode.tpp
+iostream
+-
+vector
+-
+memory
 -
 

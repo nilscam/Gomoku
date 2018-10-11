@@ -96,10 +96,19 @@
 		<Unit filename="/home/nils/Documents/projets/Gomoku/algo/Board.hpp">
 			<Option target="pbrain-gradeAgo"/>
 		</Unit>
-		<Unit filename="/home/nils/Documents/projets/Gomoku/algo/TreeNode.cpp">
+		<Unit filename="/home/nils/Documents/projets/Gomoku/algo/Evaluator.cpp">
 			<Option target="pbrain-gradeAgo"/>
 		</Unit>
-		<Unit filename="/home/nils/Documents/projets/Gomoku/algo/TreeNode.hpp">
+		<Unit filename="/home/nils/Documents/projets/Gomoku/algo/Evaluator.hpp">
+			<Option target="pbrain-gradeAgo"/>
+		</Unit>
+		<Unit filename="/home/nils/Documents/projets/Gomoku/algo/MinMax.cpp">
+			<Option target="pbrain-gradeAgo"/>
+		</Unit>
+		<Unit filename="/home/nils/Documents/projets/Gomoku/algo/MinMax.hpp">
+			<Option target="pbrain-gradeAgo"/>
+		</Unit>
+		<Unit filename="/home/nils/Documents/projets/Gomoku/algo/TreeNode.tpp">
 			<Option target="pbrain-gradeAgo"/>
 		</Unit>
 		<Unit filename="/home/nils/Documents/projets/Gomoku/main.cpp">

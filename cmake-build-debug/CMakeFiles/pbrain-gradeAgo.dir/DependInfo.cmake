@@ -6,7 +6,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/nils/Documents/projets/Gomoku/PiskvorkInterface.cpp" "/home/nils/Documents/projets/Gomoku/cmake-build-debug/CMakeFiles/pbrain-gradeAgo.dir/PiskvorkInterface.cpp.o"
   "/home/nils/Documents/projets/Gomoku/algo/Board.cpp" "/home/nils/Documents/projets/Gomoku/cmake-build-debug/CMakeFiles/pbrain-gradeAgo.dir/algo/Board.cpp.o"
-  "/home/nils/Documents/projets/Gomoku/algo/TreeNode.cpp" "/home/nils/Documents/projets/Gomoku/cmake-build-debug/CMakeFiles/pbrain-gradeAgo.dir/algo/TreeNode.cpp.o"
+  "/home/nils/Documents/projets/Gomoku/algo/Evaluator.cpp" "/home/nils/Documents/projets/Gomoku/cmake-build-debug/CMakeFiles/pbrain-gradeAgo.dir/algo/Evaluator.cpp.o"
+  "/home/nils/Documents/projets/Gomoku/algo/MinMax.cpp" "/home/nils/Documents/projets/Gomoku/cmake-build-debug/CMakeFiles/pbrain-gradeAgo.dir/algo/MinMax.cpp.o"
   "/home/nils/Documents/projets/Gomoku/main.cpp" "/home/nils/Documents/projets/Gomoku/cmake-build-debug/CMakeFiles/pbrain-gradeAgo.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
