@@ -18,16 +18,12 @@ float MinMax::alphaBeta(TreeNode<Board> *node, float a, float b, MINMAX target) 
         for (int i = 0; i < childrens.size(); i++) {
             v = std::min(v, alphaBeta(childrens[i], a, b, SWITCH_TARGET(target)));
             if (a >= v) { // coupure
-                /*
-                for (int to_delete = static_cast<int>(childrens.size() - i); i < to_delete; i++) {
-                    TreeNode<Board> *delNode = childrens.back();
-                    delete delNode;
-                    childrens.pop_back();
-                }
-                 */
+                //node->deleteFrom(i); ne marche pas pour l'instant
                 return v;
             }
             b = std::min(v, b);
+            if (timerEnd())
+                break;
         }
         return v;
     } else if (target == MAX) {
@@ -36,16 +32,12 @@ float MinMax::alphaBeta(TreeNode<Board> *node, float a, float b, MINMAX target) 
         for (int i = 0; i < childrens.size(); i++) {
             v = std::max(v, alphaBeta(childrens[i], a, b, SWITCH_TARGET(target)));
             if (v >= b) { // coupure
-                /*
-                for (int to_delete = static_cast<int>(childrens.size() - i); i < to_delete; i++) {
-                    TreeNode<Board> *delNode = childrens.back();
-                    delete delNode;
-                    childrens.pop_back();
-                }
-                 */
+                //node->deleteFrom(i); ne marche pas pour l'instant
                 return v;
             }
             a = std::max(a, v);
+            if (timerEnd())
+                break;
         }
         return v;
     }
@@ -105,16 +97,6 @@ void MinMax::retroPropagation(TreeNode<Board> *parent, MINMAX target) {
     }
 }
 
-void MinMax::propagation() {
-    deepSimulation(tree, WHITE);
-    deepSimulation(tree, WHITE);
-
-    retroPropagation(tree, MAX);
-
-    for (auto child : tree->getChildrens().back()->getChildrens())
-        std::cout << child->getData() << std::endl;
-}
-
 short MinMax::getBestMove() {
     timer = clock();
 
@@ -123,14 +105,22 @@ short MinMax::getBestMove() {
     numberOfNodes = 0;
     tree = new TreeNode(curPlate);
     while (!timerEnd()) {
-        std::cout << "deep" << curDeep << std::endl;
+        std::cout << "deep: " << curDeep << std::endl;
         deepSimulation(tree, WHITE);
-
         alphaBeta(tree, FLT_MIN, FLT_MAX, MAX);
         //retroPropagation(tree, MAX);
+        curDeep += 1;
     }
+    short move = 0;
+    float best = FLT_MIN;
+
+    for (auto child : tree->getChildrens())
+        if (best < child->value) { // on recherche le move avec la plus haute valeur
+            move = child->getData().last_play;
+            best = child->value;
+        }
     delete tree;
-    return 0;
+    return move;
 }
 
 void MinMax::play() {
@@ -152,5 +142,9 @@ void MinMax::addMove(int y, int x) {
 
 bool MinMax::timerEnd() {
     return ((double)(clock() - timer) / CLOCKS_PER_SEC) > 4.5;
+}
+
+void MinMax::debugMinMax() {
+    std::cout << "DEBUG - <number of nodes explored: " << numberOfNodes << ">, <number of evaluations made: " << numberOfEvaluations << ">" << std::endl;
 }
 

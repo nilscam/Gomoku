@@ -46,6 +46,9 @@ void PiskvorkInterface::turn() {
     explorer.addMove(std::stoi(command[1]), std::stoi(command[2]));
     //std::cout << curPlate << std::endl;
     explorer.play();
+
+    // Pas obligatoire
+    explorer.debugMinMax();
 }
 
 void PiskvorkInterface::begin() {

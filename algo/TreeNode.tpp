@@ -22,6 +22,7 @@ public:
     std::vector<TreeNode<Data> *> &getChildrens();
 
     void    addChildren(TreeNode<Data> *);
+    void    deleteFrom(int);
 
     float   value;
 private:
@@ -56,6 +57,17 @@ void TreeNode<Data>::addChildren(TreeNode<Data> *data) {
 template<typename Data>
 std::vector<TreeNode<Data> *> &TreeNode<Data>::getChildrens() {
     return childrens;
+}
+
+template<typename Data>
+void TreeNode<Data>::deleteFrom(int nb) {
+    int to_delete = static_cast<int>(childrens.size() - nb);
+
+    for (int i = 0; i < to_delete; i++) {
+        TreeNode<Data> *delNode = childrens.back();
+        delete delNode;
+        childrens.pop_back();
+    }
 }
 
 

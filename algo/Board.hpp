@@ -45,12 +45,13 @@ public:
     char  &operator[](int);
     friend std::ostream &operator<<(std::ostream &, const Board &);
 
+    short   last_play = -1;
+
 private:
     bool    compressed = false;
 
     std::string   plate;
 
-    short   last_play = -1;
 
     // y, x, yl, xl
     short   playingZone[4] = {-1, -1, 1, 1};

@@ -27,17 +27,18 @@ public:
     float   alphaBeta(TreeNode<Board> *, float, float, MINMAX);
     // retropropagation without alphaBeta (evaluate every leaf)
     void    retroPropagation(TreeNode<Board> *, MINMAX);
-
     // we propagate all the moves on the tree
     void    deepSimulation(TreeNode<Board> *, TURN);
 
-    void    propagation();
+
+
     short   getBestMove();
 
     void    addMove(int, int);
     void    play();
 
 
+    void    debugMinMax();
     bool    timerEnd();
 private:
     Board   curPlate;
