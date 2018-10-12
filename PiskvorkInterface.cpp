@@ -38,19 +38,18 @@ void PiskvorkInterface::mainLoop() {
 
 void PiskvorkInterface::start() {
     // set board size
-    boardSize = std::stoi(command[1]);
     std::cout << "OK" << std::endl;
 }
 
 void PiskvorkInterface::turn() {
     // rajouter gestion erreur ici
-    addMove(std::stoi(command[1]), std::stoi(command[2]));
+    explorer.addMove(std::stoi(command[1]), std::stoi(command[2]));
     //std::cout << curPlate << std::endl;
-    playMove();
+    explorer.play();
 }
 
 void PiskvorkInterface::begin() {
-    playMove();
+    explorer.play();
 }
 
 void PiskvorkInterface::board() {
@@ -79,13 +78,4 @@ void PiskvorkInterface::error(std::string &s) {
 
 void PiskvorkInterface::debug(std::string &s) {
     std::cout << "DEBUG - " << s << std::endl;
-}
-
-/* opponent move */
-void PiskvorkInterface::addMove(int y, int x) {
-    curPlate[POS(y, x)] = BLACK;
-}
-
-void PiskvorkInterface::playMove() {
-    std::cout << rand() % 19 << "," << rand() % 19 << std::endl;
 }

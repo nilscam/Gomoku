@@ -59,3 +59,37 @@ void MinMax::propagation() {
         std::cout << child->getData() << std::endl;
 }
 
+short MinMax::getBestMove() {
+    timer = clock();
+
+    curDeep = 0;
+    tree = TreeNode(curPlate);
+    while (!timerEnd()) {
+        std::cout << "deep" << std::endl;
+        deepSimulation(&tree);
+        retroPropagation(&tree, MAX);
+    }
+    return 0;
+}
+
+void MinMax::play() {
+    if (firstMove) {
+        std::cout << "9,9" << std::endl; // on joue au milieu le premier move
+        curPlate.play(POS(9, 9), WHITE);
+    } else {
+        short   pos_to_play = getBestMove();
+
+        std::cout << pos_to_play / HEIGHT << "," << pos_to_play % WIDTH << std::endl;
+        curPlate.play(pos_to_play, WHITE);
+    }
+}
+
+void MinMax::addMove(int y, int x) {
+    firstMove = false;
+    curPlate.play(POS(y, x), BLACK);
+}
+
+bool MinMax::timerEnd() {
+    return ((double)(clock() - timer) / CLOCKS_PER_SEC) > 4.5;
+}
+

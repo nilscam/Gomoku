@@ -10,6 +10,7 @@
 #include <sstream>
 #include <map>
 #include "algo/Board.hpp"
+#include "algo/MinMax.hpp"
 
 class PiskvorkInterface;
 typedef void (PiskvorkInterface::*instruction)();
@@ -19,9 +20,6 @@ public:
 
     PiskvorkInterface();
     ~PiskvorkInterface();
-
-    void    addMove(int, int);
-    void    playMove();
 
     // instructions
     void    start();
@@ -42,7 +40,8 @@ public:
     void    mainLoop();
 
 private:
-    Board   curPlate;
+    MinMax  explorer;
+
     std::vector<std::string>    command;
 
     std::map<std::string, instruction>    callInstruction = {
@@ -56,7 +55,6 @@ private:
     };
 
     bool    run = true;
-    int     boardSize = 19;
 };
 
 #endif //PBRAIN_GRADEAGO_PISKVORKINTERFACE_HPP

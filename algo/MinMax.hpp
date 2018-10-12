@@ -15,6 +15,7 @@ typedef char MINMAX;
 #define MIN 0
 #define MAX 1
 
+// je joue toujours les blanc et l'adversaire toujours les noirs
 class MinMax {
 public:
     MinMax() = default;
@@ -25,12 +26,22 @@ public:
     void    retroPropagation(TreeNode<Board> *, MINMAX);
 
     void    propagation();
+    short   getBestMove();
 
+    void    addMove(int, int);
+    void    play();
+
+
+    bool    timerEnd();
 private:
-    TreeNode<Board>   tree;
+    Board   curPlate;
 
+    TreeNode<Board>   tree;
     Evaluator   evaluator;
     short   curDeep;
+
+    bool    firstMove = true;
+    clock_t timer;
 };
 
 

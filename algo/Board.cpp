@@ -67,6 +67,7 @@ void Board::play(short pos, char player) {
     } else {
         plate[pos] = player;
     }
+    prevMove = pos;
 }
 
 std::vector<short> Board::getPossiblesMoves() {
@@ -74,10 +75,17 @@ std::vector<short> Board::getPossiblesMoves() {
     std::vector<short>     moves;
 
     moves.reserve(361);
+    for (short y = playingZone[0] - 2; y < playingZone[0] + playingZone[2] + 2; y++)
+        for (short x = playingZone[1] - 2; x < playingZone[1] + playingZone[3] + 2; x++) {
+            if (y >= 0 && x >= 0 && y < HEIGHT && x < WIDTH && plate[POS(y, x)] == EMPTY)
+                moves.push_back(POS(y, x));
+        }
+
+            /*
     for (int i = 0; i < FULLSIZE; i++)
         if (plate[i] == EMPTY)
             moves.push_back(i);
-    moves.reserve(moves.size());
+             */
     compress();
     return moves;
 }

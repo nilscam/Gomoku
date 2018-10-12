@@ -7,11 +7,9 @@
 #include "algo/MinMax.hpp"
 
 int main() {
-    /*
     PiskvorkInterface   program;
 
     program.mainLoop();
-    */
 
     /*
     TreeNode<int>    node(5);
@@ -21,6 +19,7 @@ int main() {
 
     node.print();
     */
+    /*
     MinMax  m;
 
     std::cout << "Minmax " << sizeof(MinMax) << std::endl;
@@ -28,5 +27,6 @@ int main() {
     std::cout << "TreeNode " << sizeof(TreeNode<Board>) << std::endl;
 
     m.propagation();
+    */
     return 0;
 }

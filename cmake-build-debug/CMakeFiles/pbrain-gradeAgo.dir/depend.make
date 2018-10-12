@@ -4,6 +4,9 @@
 CMakeFiles/pbrain-gradeAgo.dir/PiskvorkInterface.cpp.o: ../PiskvorkInterface.cpp
 CMakeFiles/pbrain-gradeAgo.dir/PiskvorkInterface.cpp.o: ../PiskvorkInterface.hpp
 CMakeFiles/pbrain-gradeAgo.dir/PiskvorkInterface.cpp.o: ../algo/Board.hpp
+CMakeFiles/pbrain-gradeAgo.dir/PiskvorkInterface.cpp.o: ../algo/Evaluator.hpp
+CMakeFiles/pbrain-gradeAgo.dir/PiskvorkInterface.cpp.o: ../algo/MinMax.hpp
+CMakeFiles/pbrain-gradeAgo.dir/PiskvorkInterface.cpp.o: ../algo/TreeNode.tpp
 
 CMakeFiles/pbrain-gradeAgo.dir/algo/Board.cpp.o: ../algo/Board.cpp
 CMakeFiles/pbrain-gradeAgo.dir/algo/Board.cpp.o: ../algo/Board.hpp
