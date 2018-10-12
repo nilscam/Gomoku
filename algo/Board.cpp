@@ -67,7 +67,7 @@ void Board::play(short pos, char player) {
     } else {
         plate[pos] = player;
     }
-    prevMove = pos;
+    last_play = pos;
 }
 
 std::vector<short> Board::getPossiblesMoves() {

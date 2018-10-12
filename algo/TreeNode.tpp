@@ -22,7 +22,6 @@ public:
     std::vector<TreeNode<Data> *> &getChildrens();
 
     void    addChildren(TreeNode<Data> *);
-    void    print();
 
     float   value;
 private:
@@ -52,12 +51,6 @@ void TreeNode<Data>::setData(Data data) {
 template<typename Data>
 void TreeNode<Data>::addChildren(TreeNode<Data> *data) {
     childrens.push_back(data);
-}
-
-template<typename Data>
-void TreeNode<Data>::print() {
-    for (int i = 0; i < childrens.size(); i++)
-        std::cout << childrens[i]->getData() << std::endl;
 }
 
 template<typename Data>
