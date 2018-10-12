@@ -53,7 +53,7 @@ private:
     std::string   plate;
 
     // y, x, yl, xl
-    short   playingZone[4] = {-1, -1, 5, 5};
+    short   playingZone[4] = {-1, -1, 1, 1};
 };
 
 #endif //IA_BOARD_H

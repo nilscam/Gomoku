@@ -39,23 +39,27 @@ void Board::decompress() {
 }
 
 void Board::play(short pos, char player) {
-    auto y = static_cast<short>(pos / HEIGHT);
-    auto x = static_cast<short>(pos % WIDTH);
 
-    // y
-    if (y - 2 < playingZone[0]) {
-        playingZone[2] += static_cast<short>(playingZone[0] - (y - 2));
-        playingZone[0] = static_cast<short>(y - 2 < playingZone[0] ? (y - 2 < 0 ? 0 : y - 2) : playingZone[0]);
-    } else if (y + 2 > playingZone[0] + playingZone[2]) {
-        playingZone[2] += ((y + 2) - (playingZone[0] + playingZone[2]));
-    }
+    if (playingZone[0] == -1) {
+        // Must be init
+        initPlayingZone(pos);
+    } else {
+        auto y = static_cast<short>(pos / HEIGHT);
+        auto x = static_cast<short>(pos % WIDTH);
 
-    // x
-    if (x - 2 < playingZone[1]) {
-        playingZone[3] += static_cast<short>(playingZone[1] - (x - 2));
-        playingZone[1] = static_cast<short>(x - 2 < playingZone[1] ? (x - 2 < 0 ? 0 : x - 2) : playingZone[1]);
-    } else if (x + 2 > playingZone[1] + playingZone[3]) {
-        playingZone[3] += ((x + 2) - (playingZone[1] + playingZone[3]));
+        if (y < playingZone[0]) {
+            playingZone[2] += playingZone[0] - y;
+            playingZone[0] = y;
+        } else if (playingZone[0] + playingZone[2] < (y + 1)) {
+            playingZone[2] += (y + 1) - (playingZone[0] + playingZone[2]);
+        }
+
+        if (x < playingZone[1]) {
+            playingZone[3] += playingZone[1] - x;
+            playingZone[1] = x;
+        } else if (playingZone[1] + playingZone[3] < (x + 1)) {
+            playingZone[3] += (x + 1) - (playingZone[1] + playingZone[3]);
+        }
     }
 
     if (compressed) {
@@ -113,10 +117,10 @@ void Board::initPlayingZone(short pos) {
     auto y = static_cast<short>(pos / HEIGHT);
     auto x = static_cast<short>(pos % WIDTH);
 
-    playingZone[0] = static_cast<short>(y - 2 < 0 ? 0 : y - 2);
-    playingZone[1] = static_cast<short>(x - 2 < 0 ? 0 : x - 2);
+    playingZone[0] = y;
+    playingZone[1] = x;
 
-    playingZone[2] -= y > 16 ? 21 - y : 0;
-    playingZone[3] -= x > 16 ? 21 - x : 0;
+    playingZone[2] = 1;
+    playingZone[3] = 1;
 }
 

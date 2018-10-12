@@ -51,10 +51,11 @@ void MinMax::retroPropagation(TreeNode<Board> *parent, MINMAX target) {
 
 void MinMax::propagation() {
     deepSimulation(&tree);
+    deepSimulation(&tree);
 
     retroPropagation(&tree, MAX);
 
-    for (auto child : tree.getChildrens())
+    for (auto child : tree.getChildrens().back()->getChildrens())
         std::cout << child->getData() << std::endl;
 }
 
