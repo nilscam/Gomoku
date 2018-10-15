@@ -5,6 +5,7 @@
 #ifndef IA_MINMAX_HPP
 #define IA_MINMAX_HPP
 
+#include <algorithm>
 #include <cfloat>
 
 #include "Board.hpp"
@@ -30,7 +31,7 @@ public:
     // we propagate all the moves on the tree
     void    deepSimulation(TreeNode<Board> *, TURN);
 
-
+    void    reduceTree(TreeNode<Board> *, MINMAX);
 
     short   getBestMove();
 

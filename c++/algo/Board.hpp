@@ -46,15 +46,12 @@ public:
     friend std::ostream &operator<<(std::ostream &, const Board &);
 
     short   last_play = -1;
+    std::string   plate;
+    // y, x, yl, xl
+    short   playingZone[4] = {-1, -1, 1, 1};
 
 private:
     bool    compressed = false;
-
-    std::string   plate;
-
-
-    // y, x, yl, xl
-    short   playingZone[4] = {-1, -1, 1, 1};
 };
 
 #endif //IA_BOARD_H

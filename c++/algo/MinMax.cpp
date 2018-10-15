@@ -13,7 +13,8 @@ float MinMax::alphaBeta(TreeNode<Board> *node, float a, float b, MINMAX target) 
         numberOfEvaluations += 1; // pour les stats
         return node->value;
     } else if (target == MIN) {
-        float v = FLT_MAX;
+        float   v = FLT_MAX;
+        bool    brk = false;
 
         for (int i = 0; i < childrens.size(); i++) {
             v = std::min(v, alphaBeta(childrens[i], a, b, SWITCH_TARGET(target)));
@@ -22,12 +23,17 @@ float MinMax::alphaBeta(TreeNode<Board> *node, float a, float b, MINMAX target) 
                 return v;
             }
             b = std::min(v, b);
-            if (timerEnd())
+            if (timerEnd()) {
+                brk = true;
                 break;
+            }
         }
+        if (!brk)
+            node->value = v;
         return v;
     } else if (target == MAX) {
         float v = FLT_MIN;
+        bool    brk = false;
 
         for (int i = 0; i < childrens.size(); i++) {
             v = std::max(v, alphaBeta(childrens[i], a, b, SWITCH_TARGET(target)));
@@ -36,9 +42,13 @@ float MinMax::alphaBeta(TreeNode<Board> *node, float a, float b, MINMAX target) 
                 return v;
             }
             a = std::max(a, v);
-            if (timerEnd())
+            if (timerEnd()) {
+                brk = true;
                 break;
+            }
         }
+        if (!brk)
+            node->value = v;
         return v;
     }
     std::cerr << "ERREUR ALPHABETA" << std::endl;
@@ -97,6 +107,16 @@ void MinMax::retroPropagation(TreeNode<Board> *parent, MINMAX target) {
     }
 }
 
+/* inutile pour l'instant */
+void MinMax::reduceTree(TreeNode<Board> *node, MINMAX target) {
+    auto childrens = node->getChildrens();
+
+    std::vector<float>  results;
+    for (auto &child : childrens)
+        results.push_back(child->value);
+    std::sort(results.begin(), results.end());
+}
+
 short MinMax::getBestMove() {
     timer = clock();
 
@@ -107,7 +127,11 @@ short MinMax::getBestMove() {
     while (!timerEnd()) {
         std::cout << "deep: " << curDeep << std::endl;
         deepSimulation(tree, WHITE);
+        if (timerEnd())
+            break;
         alphaBeta(tree, FLT_MIN, FLT_MAX, MAX);
+        if (timerEnd())
+            break;
         //retroPropagation(tree, MAX);
         curDeep += 1;
     }
