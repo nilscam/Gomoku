@@ -30,6 +30,8 @@ def main():
 	write_log(OUT, "Start Program")
 	rcv_msg()
 	snd_msg("OK")
+	for msg in rcv_msg():
+		snd_msg("OK")
 	return (0)
 
 # Launcher
