@@ -5,7 +5,7 @@
 # Imports
 import sys
 
-file = open("C:\\User\\$9BS000-H5UFVKKH9ICS\\Desktop\\Gomoku\\python\\infos.log", "w")
+file = open("infos.log", "w")
 IN = "< "
 OUT = "> "
 
@@ -29,7 +29,7 @@ def rcv_msg():
 def main():
 	write_log(OUT, "Start Program")
 	rcv_msg()
-	snd_msg("OK")
+	snd_msg("UNKNOWN")
 	for msg in rcv_msg():
 		snd_msg("OK")
 	return (0)
