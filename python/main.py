@@ -5,7 +5,7 @@
 # Imports
 import sys
 
-file = open("C:/User/$9BS000-H5UFVKKH9ICS/Desktop/Gomoku/python/infos.log", "w")
+file = open("C:\\User\\$9BS000-H5UFVKKH9ICS\\Desktop\\Gomoku\\python\\infos.log", "w")
 IN = "< "
 OUT = "> "
 
