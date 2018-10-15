@@ -29,7 +29,7 @@ def rcv_msg():
 def main():
 	write_log(OUT, "Start Program")
 	rcv_msg()
-	snd_msg("OK - yolo swag")
+	snd_msg("OK")
 	return (0)
 
 # Launcher
