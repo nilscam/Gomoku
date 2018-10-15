@@ -1,0 +1,37 @@
+##
+## test.py
+##
+
+# Imports
+import sys
+
+file = open("infos.log", "w")
+IN = "< "
+OUT = "> "
+
+# Write Log
+def write_log(source, info):
+	file.write(source + str(info) + "\n");
+
+# Send Message
+def snd_msg(msg):
+	write_log(OUT, msg)
+	print(msg)
+	print("DEBUG - toto")
+
+# Receive Message
+def rcv_msg():
+	msg = sys.stdin
+	write_log(IN, msg)
+	return (msg)
+
+# Main
+def main():
+	write_log(OUT, "Start Program")
+	rcv_msg()
+	snd_msg("OK - yolo swag")
+	return (0)
+
+# Launcher
+if __name__ == "__main__":
+	main()
