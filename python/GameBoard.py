@@ -43,7 +43,7 @@ class GameBoard:
 	def get_all_possible_move(player):
 		moves = []
 
-		if (player == 1)
+		if (player == 1):
 			board = self.board_1
 		elif (player == 2):
 			board = self.board_2
