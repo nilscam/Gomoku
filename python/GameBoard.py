@@ -52,6 +52,87 @@ class GameBoard:
 				moves.append(i)
 		return (moves)
 
+	# Check Line
+	def check_line(self, board, pos):
+		print("> Start check")
+		# check left
+		win = 1
+		for i in range(1, 5):
+			if (((pos - i) / BOARD_SIZE) == (pos / BOARD_SIZE) and board[pos - i] == 0):
+				win = 0
+				break
+		if (win):
+			return (1)
+		# check right
+		win = 1
+		for i in range(1, 5):
+			if (((pos + i) / BOARD_SIZE) == (pos / BOARD_SIZE) and board[pos + i] == 0):
+				win = 0
+				break
+		if (win):
+			return (1)
+		# check up
+		win = 1
+		for i in range(1, 5):
+			if (((pos - (i * BOARD_SIZE)) % BOARD_SIZE) == (pos % BOARD_SIZE) and board[pos - (i * BOARD_SIZE)] == 0):
+				win = 0
+				break
+		if (win):
+			return (1)
+		# check down
+		win = 1
+		for i in range(1, 5):
+			if (((pos + (i * BOARD_SIZE)) % BOARD_SIZE) == (pos % BOARD_SIZE) and board[pos + (i * BOARD_SIZE)] == 0):
+				win = 0
+				break
+		if (win):
+			return (1)
+		# check diag up right
+		win = 1
+		for i in range(1, 5):
+			if (True and board[pos - (i * BOARD_SIZE) + i] == 0):
+				win = 0
+				break
+		if (win):
+			return (1)
+		# check diag up left
+		win = 1
+		for i in range(1, 5):
+			if (True and board[pos - (i * BOARD_SIZE) - i] == 0):
+				win = 0
+				break
+		if (win):
+			return (1)
+		# check diag down left
+		win = 1
+		for i in range(1, 5):
+			if (True and board[pos + (i * BOARD_SIZE) - i] == 0):
+				win = 0
+				break
+		if (win):
+			return (1)
+		# check diag down right
+		win = 1
+		for i in range(1, 5):
+			if (True and board[pos + (i * BOARD_SIZE) + i] == 0):
+				win = 0
+				break
+		if (win):
+			return (1)
+
+	# Check Win
+	def check_win(self, player):
+		if (player == 1):
+			board = self.board_1
+		else:
+			board = self.board_2
+		for i in range(BOARD_LENGTH):
+			if (board[i] == 1):
+				if (self.check_line(board, i) == 1):
+					return (1)
+		return (0)
+
+
 	# Correct Move
 	def correct_move(self, x, y):
 		if (self.board_1[y * BOARD_SIZE + x] == 1 or self.board_2[y * BOARD_SIZE + x] == 1):
@@ -66,6 +147,7 @@ class GameBoard:
 			self.board_1[y * BOARD_SIZE + x] = 1
 		elif (player == 2):
 			self.board_2[y * BOARD_SIZE + x] = 1
+		self.check_win(1)
 		return (0)
 
 	# Init

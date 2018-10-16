@@ -30,9 +30,7 @@ def rcv_msg():
 def main():
 	game_board = GameBoard()
 
-	game_board.play(1, 0, 10)
-	game_board.play(2, 12, 1)
-	game_board.play(1, 3, 4)
+	game_board.play(1, 6, 7)
 	game_board.display_board()
 	return (0)
 
