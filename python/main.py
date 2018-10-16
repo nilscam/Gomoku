@@ -4,6 +4,7 @@
 
 # Imports
 import sys
+from GameBoard import GameBoard
 
 file = open("infos.log", "w")
 IN = "< "
@@ -27,14 +28,12 @@ def rcv_msg():
 
 # Main
 def main():
-	write_log(OUT, "Start Program")
-	rcv_msg()
-	snd_msg("UNKNOWN")
-	rcv_msg()
-	snd_msg("OK")
-	snd_msg("5,5")
-	for msg in rcv_msg():
-		snd_msg("5,5")
+	game_board = GameBoard()
+
+	game_board.play(1, 0, 10)
+	game_board.play(2, 12, 1)
+	game_board.play(1, 3, 4)
+	game_board.display_board()
 	return (0)
 
 # Launcher
