@@ -6,8 +6,8 @@
 import sys
 
 # Macros
-BOARD_SIZE = 18
-BOARD_LENGTH = 324
+BOARD_SIZE = 19
+BOARD_LENGTH = 361
 
 # Class Game Board
 class GameBoard:
@@ -30,7 +30,7 @@ class GameBoard:
 				sys.stdout.write("\n")
 				if (i / BOARD_SIZE < 10):
 					sys.stdout.write(" ")
-				sys.stdout.write(" " + str(i / BOARD_SIZE))
+				sys.stdout.write(" " + str(int(i / BOARD_SIZE)))
 			if (self.board_1[i] == 1):
 				sys.stdout.write("  x")
 			elif (self.board_2[i] == 1):
