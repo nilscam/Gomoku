@@ -23,6 +23,8 @@ class GameBoard:
 	# Init
 	def __init__(self):
 		self.player_turn = BLACK
+		self.reward = 0
+		self.caseLeft = 361 # compteur quand il n'y a plus de place sur la map
 		self.board_1 = [ 0 for i in range(BOARD_LENGTH) ]
 		self.board_2 = [ 0 for i in range(BOARD_LENGTH) ]
 
@@ -152,6 +154,15 @@ class GameBoard:
 					return (1)
 		return (0)
 
+	def gameEnd(self):
+		if check_win == 1: # si il y a un gagant
+			self.reward = BLACK if board.player_turn == WHITE else WHITE
+			return 1
+		elif self.caseLeft <= 0: # si il n'y a plus de case où jouer
+			self.reward = 0
+			return 1
+		return 0
+
 	# Correct Move
 	def correct_move(self, x, y):
 		if (self.board_1[y * BOARD_SIZE + x] == 1 or self.board_2[y * BOARD_SIZE + x] == 1):
@@ -168,6 +179,7 @@ class GameBoard:
 			self.board_2[y * BOARD_SIZE + x] = 1
 		self.check_win(1)
 		self.player_turn *= -1
+		self.caseLeft -= 1
 		return (0)
 
 	# To String

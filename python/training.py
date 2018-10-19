@@ -6,9 +6,6 @@ import GameBoard as game
 BLACK = 1
 WHITE = -1
 
-def assignRewards(examples, board):
-    return 1
-
 # on fait combattre 2 réseaux de neuronnes l'un contre l'autre et on retourne le pourcentage de win du premier sur le deuxième
 def fight(net1, net2):
     numGame = 100
@@ -21,7 +18,7 @@ def fight(net1, net2):
 
         # playgame
         board = game.GameBoard()
-        while board.gameEnd():
+        while not board.gameEnd():
 
             if colorNet1 == board.player_turn:
                 moves = mtcs.pi(board.toString(), board.player_turn, net1)
@@ -45,6 +42,13 @@ def fight(net1, net2):
 
     return win_net1 / numGame
 
+def assignRewards(examples, board):
+    reward = board.reward()
+
+    for ex in examples:
+        ex[2] = reward
+        reward *= -1
+    return examples
 
 def playGame(nnet):
     examples = []
@@ -71,6 +75,7 @@ def training():
     examples = []
     for i in range(numIterations):
         for e in range(numGame):
+            print ("playing game")
             examples += playGame(nnet)
 
         new_nnet = nn.neuralNet()

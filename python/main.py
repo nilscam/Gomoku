@@ -1,39 +1,9 @@
-##
-## test.py
-##
+#!/usr/bin/env python3
 
-# Imports
-import sys
-from GameBoard import GameBoard
+import training
 
-file = open("infos.log", "w")
-IN = "< "
-OUT = "> "
-
-# Write Log
-def write_log(source, info):
-	file.write(source + str(info) + "\n");
-
-# Send Message
-def snd_msg(msg):
-	write_log(OUT, msg)
-	print(msg)
-	print("DEBUG - toto")
-
-# Receive Message
-def rcv_msg():
-	msg = sys.stdin
-	write_log(IN, msg)
-	return (msg)
-
-# Main
 def main():
-	game_board = GameBoard()
+	training.training()
 
-	game_board.play(1, 7, 6)
-	game_board.display_board()
-	return (0)
-
-# Launcher
 if __name__ == "__main__":
-	main()
+    main()

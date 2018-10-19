@@ -34,11 +34,11 @@ class evaluator:
 
     # s est la string representation du board
     def search(self, s, player, nnet):
-        if board.check_win():
-            return -board.reward() # à changer
-
         board = game.Board()
         board.loadState(s, player)
+
+        if board.gameEnd():
+            return 0 if board.reward() == 0 else -1 # à changer
 
         if s not in P:
             v, self.Ps[s] = nnet.predict(board)
