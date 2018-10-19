@@ -13,8 +13,9 @@ BOARD_LENGTH = 361
 
 class GameBoard:
 
-	board_1 = [ 0 for i in range(BOARD_LENGTH) ]
-	board_2 = [ 0 for i in range(BOARD_LENGTH) ]
+	def __init__(self):
+		self.board_1 = [ 0 for i in range(BOARD_LENGTH) ]
+		self.board_2 = [ 0 for i in range(BOARD_LENGTH) ]
 
 	def display_board(self):
 		sys.stdout.write("   ")
@@ -140,6 +141,3 @@ class GameBoard:
 			self.board_2[y * BOARD_SIZE + x] = 1
 		self.check_win(1)
 		return (0)
-
-	def __init__(self):
-		pass
