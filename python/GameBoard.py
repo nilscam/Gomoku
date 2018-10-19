@@ -170,7 +170,7 @@ class GameBoard:
 		return (0)
 
 	# To String
-	def to_string():
+	def to_string(self):
 		board = ""
 
 		for i in range(BOARD_LENGTH):
@@ -182,8 +182,15 @@ class GameBoard:
 				board += "0"
 		return (board)
 
+	# To DataSet
+	def to_dataset(self):
+		if (self.player_turn == BLACK)
+			return (self.board_1 + self.board_2)
+		elif (self.player_turn == WHITE)
+			return (self.board_2 + self.board_1)
+
 	# Load State
-	def load_state(board):
+	def load_state(self, board):
 		for i in range(BOARD_LENGTH):
 			if (board[i] == "2"):
 				self.board_1[i] == 0
