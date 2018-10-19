@@ -11,7 +11,7 @@ def createModel():
     sizeInput = 722 + 1
 
     inputs = Input(shape=(sizeInput,))
-    l1 = Dense(256, activation='relu')(inputs)
+    l1 = Dense(256, activation='sigmoid')(inputs)
     l2 = Dense(256, activation='sigmoid')(l1)
     v = Dense(1, activation='tanh', name='v')(l2)
     pm = Dense(361, activation='softmax', name='pm')(l2)
@@ -23,5 +23,9 @@ def createModel():
 def save(model):
     model.save('my_model.h5')
 
-def train(data, labels):
-    model.fit(data, labels, epochs=10, batch_size=16)
+def train(examples):
+    inputBoards = 1
+    pms = 2
+    vs = 3
+
+    model.fit(x= inputBoards, y= [vs, pms], epoch=10, batch_size=16)
