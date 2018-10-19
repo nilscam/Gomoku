@@ -52,7 +52,7 @@ class GameBoard:
 		sys.stdout.write("\n")
 
 	# Get All Possible Move
-	def get_all_possible_move():
+	def get_all_possible_move(self):
 		moves = []
 
 		for i in range(BOARD_LENGTH):
@@ -155,8 +155,8 @@ class GameBoard:
 		return (0)
 
 	def gameEnd(self):
-		if check_win == 1: # si il y a un gagant
-			self.reward = BLACK if board.player_turn == WHITE else WHITE
+		if self.check_win(self.player_turn * -1) == 1: # si il y a un gagant
+			self.reward = BLACK if self.player_turn == WHITE else WHITE
 			return 1
 		elif self.caseLeft <= 0: # si il n'y a plus de case où jouer
 			self.reward = 0
@@ -197,13 +197,14 @@ class GameBoard:
 
 	# To DataSet
 	def to_dataset(self):
-		if (self.player_turn == BLACK)
-			return (self.board_1 + self.board_2)
-		elif (self.player_turn == WHITE)
-			return (self.board_2 + self.board_1)
+		if self.player_turn == BLACK:
+			return self.board_1 + self.board_2
+		elif self.player_turn == WHITE:
+			return self.board_2 + self.board_1
 
 	# Load State
 	def load_state(self, board):
+		self.caseLeft = 361
 		for i in range(BOARD_LENGTH):
 			if (board[i] == "2"):
 				self.board_1[i] == 0
@@ -214,3 +215,4 @@ class GameBoard:
 			else:
 				self.board_1[i] == 0
 				self.board_2[i] == 0
+				self.caseLeft -= 1

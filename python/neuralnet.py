@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 
-from keras.models import Sequential
-from keras.layers import Dense
+from keras.models import *
+from keras.layers import *
+from keras.optimizers import *
 import numpy
 import GameBoard as game
 
@@ -10,7 +11,7 @@ numpy.random.seed(7)
 class neuralNet:
 
     def __init__(self):
-        self.model = createModel()
+        self.model = self.createModel()
 
     def createModel(self):
         sizeInput = 722 + 1
@@ -22,7 +23,7 @@ class neuralNet:
         pm = Dense(361, activation='softmax', name='pm')(l2)
 
         model = Model(inputs=inputs, outputs=[v, pm])
-        model.compile(loss=['mse', 'categorical_crossentropy'], optimizer='adam'
+        model.compile(loss=['mse', 'categorical_crossentropy'], optimizer='adam')
         return model
 
     def save(self, folder='model', filename='my_model.h5'):

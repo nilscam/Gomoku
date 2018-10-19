@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import neuralnet as nn
+from mcts import MCTS
 import GameBoard as game
 
 BLACK = 1
@@ -21,9 +22,9 @@ def fight(net1, net2):
         while not board.gameEnd():
 
             if colorNet1 == board.player_turn:
-                moves = mtcs.pi(board.toString(), board.player_turn, net1)
+                moves = mcts.pi(board, net1)
             else:
-                moves = mtcs.pi(board, board.player_turn, net2)
+                moves = mcts.pi(board, net2)
             a = max(moves) # le move joué est le move le mieu évalué
             board = board.play(a)
 
@@ -43,7 +44,7 @@ def fight(net1, net2):
     return win_net1 / numGame
 
 def assignRewards(examples, board):
-    reward = board.reward()
+    reward = board.reward
 
     for ex in examples:
         ex[2] = reward
@@ -56,7 +57,7 @@ def playGame(nnet):
     board = game.GameBoard()
 
     while True:
-        moves = mtcs.pi(board, board.player_turn, nnet)
+        moves = mcts.pi(board, nnet)
 
         examples.append([board.toDataSet(), moves, None])
         a = max(moves) # le move joué est le move le mieu évalué
@@ -71,7 +72,7 @@ def training():
     numGame = 100
     numIterations = 150
 
-    nnet = nn.neuralnet()
+    nnet = nn.neuralNet()
     examples = []
     for i in range(numIterations):
         for e in range(numGame):
