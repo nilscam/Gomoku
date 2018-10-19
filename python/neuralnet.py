@@ -14,9 +14,7 @@ class neuralNet:
         self.model = self.createModel()
 
     def createModel(self):
-        sizeInput = 722 + 1
-
-        inputs = Input(shape=(sizeInput,))
+        inputs = Input(shape=(722,)) # changer la shape pour les convolutions
         l1 = Dense(256, activation='sigmoid')(inputs)
         l2 = Dense(256, activation='sigmoid')(l1)
         v = Dense(1, activation='tanh', name='v')(l2)
@@ -50,8 +48,12 @@ class neuralNet:
         model.fit(x= inputBoards, y= [vs, pms], epoch=10, batch_size=16)
 
     def predict(self, board):
-        input = board.toDataSet()
-        return self.model.predict(input)
+        inp = np.asarray(board.to_dataset())
+        inp2 = inp[np.newaxis, :]
+        print (inp2.shape)
+        print (inp.shape)
+        v, pm = self.model.predict(inp2)
+        return v[0], pm[0]
 
     def copy(self, toCopy):
         toCopy.save()

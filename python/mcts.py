@@ -9,7 +9,8 @@ class MCTS:
         self.Qsa = {} # sum des évaluations pour (state s, action a)
         self.Ns = {} # nombre de fois que j'ai été dans l'état s
         self.Nsa = {} # nombre de fois que j'ai choisi l'action a quand j'étais dans l'état s
-        self.Ps = {} #policy returned by nn for state s
+        self.Ps = {} # policy returned by nn for state s
+        self.Vs = {} # valids moves for state s
 
         self.coeffExplo = 1
         self.numMCTSSims = 20 # on fait 20 simulations de mtcs (training only)
@@ -19,6 +20,7 @@ class MCTS:
         self.Qsa = {}
         self.Ns = {}
         self.Ps = {}
+        self.Vs = {}
 
     def pi(self, board, nnet):
         s = board.to_string()
@@ -35,6 +37,7 @@ class MCTS:
 
     # s est la string representation du board
     def search(self, s, player, nnet):
+        print ('in')
         board = game.GameBoard()
         board.load_state(s)
         board.player_turn = player
@@ -42,12 +45,11 @@ class MCTS:
         if board.gameEnd():
             return 0 if board.reward == 0 else -1 # à changer
 
-        if s not in P:
+        if s not in self.Ps:
             v, self.Ps[s] = nnet.predict(board)
             self.Vs[s] = board.get_all_possible_move() # return a list of valid action
             self.Ns[s] = 0
             return -v
-
 
         # max ucb, best move
         max_u, best_action = -float("inf"), -1
@@ -70,8 +72,9 @@ class MCTS:
             self.Qsa[(s, action)] = (self.Nsa[(s,action)] * self.Qsa[(s,action)] + v) / (self.Nsa[(s,action)] + 1) # on recalcul la moyenne des evaluations
             self.Nsa[(s, action)] += 1
         else:
-            self.Qsa[(s,a)] = v
-            self.Nsa[(s,a)] = 1
+            self.Qsa[(s,action)] = v
+            self.Nsa[(s,action)] = 1
 
         self.Ns[s] += 1
+        print ('end')
         return -v

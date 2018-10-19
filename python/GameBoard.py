@@ -164,23 +164,21 @@ class GameBoard:
 		return 0
 
 	# Correct Move
-	def correct_move(self, x, y):
-		if (self.board_1[y * BOARD_SIZE + x] == 1 or self.board_2[y * BOARD_SIZE + x] == 1):
+	def correct_move(self, pos):
+		if (self.board_1[pos] == 1 or self.board_2[pos] == 1):
 			return (0)
 		return (1)
 
 	# Play
-	def play(self, player, x, y):
-		if (not self.correct_move(x, y)):
+	def play(self, pos):
+		if (not self.correct_move(pos)):
 			return (1)
-		if (player == 1):
-			self.board_1[y * BOARD_SIZE + x] = 1
-		elif (player == 2):
-			self.board_2[y * BOARD_SIZE + x] = 1
-		self.check_win(1)
+		if (self.player_turn == BLACK):
+			self.board_1[pos] = 1
+		elif (self.player_turn == WHITE):
+			self.board_2[pos] = 1
 		self.player_turn *= -1
 		self.caseLeft -= 1
-		return (0)
 
 	# To String
 	def to_string(self):
@@ -209,10 +207,11 @@ class GameBoard:
 			if (board[i] == "2"):
 				self.board_1[i] == 0
 				self.board_2[i] == 1
+				self.caseLeft -= 1
 			elif (board[i] == "1"):
 				self.board_1[i] == 1
 				self.board_2[i] == 0
+				self.caseLeft -= 1
 			else:
 				self.board_1[i] == 0
 				self.board_2[i] == 0
-				self.caseLeft -= 1
