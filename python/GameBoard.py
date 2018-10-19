@@ -49,6 +49,15 @@ class GameBoard:
 
 	def check_line(self, board, pos):
 		print("> Start check")
+		# Check Horizontal Line
+		nb_stone = 1
+		for i in range(1, 5):
+			if (((pos - i) / BOARD_SIZE == (pos / BOARD_SIZE) and board[pos - 1] == 0):
+				pass
+
+		# Check Vertical Line
+		# Check Diagonale /
+		# Check Diagonale \
 		# check left
 		win = 1
 		for i in range(1, 5):
@@ -120,8 +129,7 @@ class GameBoard:
 		else:
 			board = self.board_2
 		for i in range(BOARD_LENGTH):
-			if (board[i] == 1):
-				if (self.check_line(board, i) == 1):
+			if (board[i] == 1 and self.check_line(board, i) == 1):
 					return (1)
 		return (0)
 
