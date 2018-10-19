@@ -21,7 +21,6 @@ def fight(net1, net2):
 
         # playgame
         board = game.GameBoard()
-
         while board.gameEnd():
 
             if colorNet1 == board.player_turn:
@@ -31,7 +30,20 @@ def fight(net1, net2):
             a = max(moves) # le move joué est le move le mieu évalué
             board = board.play(a)
 
-        if board.player_turn == 1
+        if board.player_turn == BLACK: # black lost
+            if colorNet1 == BLACK:
+                win_net2 += 1
+            else:
+                win_net1 += 1
+        elif board.player_turn == WHITE: # white lost
+            if colorNet1 == WHITE:
+                win_net2 += 1
+            else:
+                win_net1 += 1
+
+        colorNet1 = colorNet1 * -1
+
+    return win_net1 / numGame
 
 
 def playGame(nnet):
@@ -69,5 +81,6 @@ def training():
 
         if winrate > threshold:
             nnet = new_nnet
+
     nnet.save(nnet)
     return nnet
