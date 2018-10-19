@@ -19,6 +19,19 @@ class evaluator:
         Ns = {}
         Ps = {}
 
+    def pi(board):
+        numMCTSSims = 20 # on fait 20 simulations de mtcs
+        s = board.toString()
+
+        self.clean()
+        for i in range(numMCTSSims):
+            mcts.search(s, board.player_turn, nnet)
+
+        counts = [ self.Nsa[(s,a)] if (s,a) in self.Nsa else 0 for a in range(board.get_all_possible_move()))]
+        probs = [ x / float(sum(counts)) for x in counts]
+        return probs
+
+
     # s est la string representation du board
     def search(self, s, player, nnet):
         if board.check_win():
@@ -28,7 +41,7 @@ class evaluator:
         board.loadState(s, player)
 
         if s not in P:
-            self.Ps[s], v = nnet.predict(s)
+            v, self.Ps[s] = nnet.predict(board)
             self.Vs[s] = board.get_all_possible_move() # return a list of valid action
             self.Ns[s] = 0
             return -v
@@ -49,7 +62,7 @@ class evaluator:
 
         action = best_action
         board.play(action)
-        v = search(board.toString(), board.player, nnet)
+        v = self.search(board.toString(), board.player_turn, nnet)
 
         if (s, action) in self.Qsa:
             self.Qsa[(s, action)] = (self.Nsa[(s,action)] * self.Qsa[(s,action)] + v) / (self.Nsa[(s,action)] + 1) # on recalcul la moyenne des evaluations

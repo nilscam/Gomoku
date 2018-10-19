@@ -10,6 +10,7 @@ BOARD_LENGTH = 361
 #fonctions à ajouter :
 # toString: retourne une string representation de la position
 # loadState: charge une position depuis une string
+# toDataSet: transforme le board en dataSet
 
 class GameBoard:
 
