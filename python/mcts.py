@@ -13,7 +13,7 @@ class MCTS:
         self.Vs = {} # valids moves for state s
 
         self.coeffExplo = 1
-        self.numMCTSSims = 20 # on fait 20 simulations de mtcs (training only)
+        self.numMCTSSims = 30 # on fait 20 simulations de mtcs (training only)
 
     def clean(self):
         self.Nsa = {}
@@ -27,23 +27,22 @@ class MCTS:
 
         self.clean()
         for i in range(self.numMCTSSims):
-            print (i)
-            self.search(s, board.player_turn, nnet)
+            self.search(s, board.player_turn, nnet, board.lastmove)
 
-        counts = [ (self.Nsa[(s,a)] if (s,a) in self.Nsa else 0) for a in board.get_all_possible_move()]
+        counts = [ (self.Nsa[(s,a)] if (s,a) in self.Nsa else 0) for a in range(361)] # pour toutes les actions même impossible (elles auront forcément 0)
         probs = [ x / float(sum(counts)) for x in counts]
         return probs
 
 
     # s est la string representation du board
-    def search(self, s, player, nnet):
-        print ('in')
+    def search(self, s, player, nnet, lastmove):
         board = game.GameBoard()
         board.load_state(s)
         board.player_turn = player
+        board.lastmove = lastmove
 
         if board.gameEnd():
-            return 0 if board.reward == 0 else -1 # à changer
+            return 0 if board.reward == 0 else 1 # je retourne (-(-1)) car j'ai perdu donc 1
 
         if s not in self.Ps:
             v, self.Ps[s] = nnet.predict(board)
@@ -66,7 +65,7 @@ class MCTS:
 
         action = best_action
         board.play(action)
-        v = self.search(board.to_string(), board.player_turn, nnet)
+        v = self.search(board.to_string(), board.player_turn, nnet, board.lastmove)
 
         if (s, action) in self.Qsa:
             self.Qsa[(s, action)] = (self.Nsa[(s,action)] * self.Qsa[(s,action)] + v) / (self.Nsa[(s,action)] + 1) # on recalcul la moyenne des evaluations
@@ -76,5 +75,4 @@ class MCTS:
             self.Nsa[(s,action)] = 1
 
         self.Ns[s] += 1
-        print ('end')
         return -v

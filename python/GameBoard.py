@@ -27,6 +27,7 @@ class GameBoard:
 		self.caseLeft = 361 # compteur quand il n'y a plus de place sur la map
 		self.board_1 = [ 0 for i in range(BOARD_LENGTH) ]
 		self.board_2 = [ 0 for i in range(BOARD_LENGTH) ]
+		self.lastmove = -1
 
 	# Display Board
 	def display_board(self):
@@ -60,88 +61,25 @@ class GameBoard:
 				moves.append(i)
 		return (moves)
 
-	# Check Line
+	def sumLign(self, board, pos, dir):
+		sum = 0
+
+		pos = [x + y for x, y in zip(pos, dir)]
+		while all(cor >= 0 and cor < BOARD_SIZE for cor in pos) and board[pos[0] * BOARD_SIZE + pos[1]] == 1:
+			pos = [x + y for x, y in zip(pos, dir)]
+			sum += 1
+		return sum
+
 	def check_line(self, board, pos):
-		print("Check Line")
-		""" Check Horizontal Line """
-		nb_stone = 1	# nb stone aligned
-		dir_1 = 1	# continue to check direction 1
-		dir_2 = 1	# continue to check direction 2
+		dir = [[1, 0], [0, 1], [1, 1]]
 
-		for i in range(1, 5):
-			if (dir_1 and int((pos - i) / BOARD_SIZE) == int(pos / BOARD_SIZE) and board[pos - 1] == 1):
-				nb_stone += 1
-			else:
-				dir_1 = 0
-			if (dir_2 and int((pos + i) / BOARD_SIZE) == int(pos / BOARD_SIZE) and board[pos + 1] == 1):
-				nb_stone += 1
-			else:
-				dir_2 = 0
-		if (nb_stone >= 5):
-			return (1)
-
-		""" Check Vertical Line """
-		nb_stone = 1	# nb stone aligned
-		dir_1 = 1	# continue to check direction 1
-		dir_2 = 1	# continue to check direction 2
-
-		for i in range(1, 5):
-			if (dir_1 and (pos - (i * BOARD_SIZE) > 0) and
-					int((pos - (i * BOARD_SIZE)) % BOARD_SIZE) == int(pos % BOARD_SIZE) and
-					(board[pos - (i * BOARD_SIZE)] == 1)):
-				nb_stone += 1
-			else:
-				dir_1 = 0
-			if (dir_2 and (pos + (i * BOARD_SIZE) < BOARD_LENGTH) and
-					int((pos + (i * BOARD_SIZE)) % BOARD_SIZE) == int(pos % BOARD_SIZE) and
-					(board[pos + (i * BOARD_SIZE)] == 1)):
-				nb_stone += 1
-			else:
-				dir_2 = 0
-		if (nb_stone >= 5):
-			return (1)
-
-		""" Check Diagonale """
-		nb_stone = 1	# nb stone aligned
-		dir_1 = 1	# continue to check direction 1
-		dir_2 = 1	# continue to check direction 2
-
-		for i in range(1, 5):
-			if (dir_1 and (pos - (i * BOARD_SIZE) - i > 0) and
-					((pos - (i * BOARD_SIZE) - i) % BOARD_SIZE) < (pos % BOARD_SIZE) and
-					(board[pos - (i * BOARD_SIZE) - i] == 1)):
-				nb_stone += 1
-			else:
-				dir_1 = 0
-			if (dir_2 and (pos + (i * BOARD_SIZE) + i < BOARD_LENGTH) and
-					((pos + (i * BOARD_SIZE) + i) % BOARD_SIZE) > (pos % BOARD_SIZE) and
-					(board[pos + (i * BOARD_SIZE) + i] == 1)):
-				nb_stone += 1
-			else:
-				dir_2 = 0
-		if (nb_stone >= 5):
-			return (1)
-
-		""" Check Diagonale """
-		nb_stone = 1	# nb stone aligned
-		dir_1 = 1	# continue to check direction 1
-		dir_2 = 1	# continue to check direction 2
-
-		for i in range(1, 5):
-			if (dir_1 and (pos - (i * BOARD_SIZE) + i > 0) and
-					((pos - (i * BOARD_SIZE) + i) % BOARD_SIZE) > (pos % BOARD_SIZE) and
-					(board[pos - (i * BOARD_SIZE) + i] == 1)):
-				nb_stone += 1
-			else:
-				dir_1 = 0
-			if (dir_2 and (pos + (i * BOARD_SIZE) - i < BOARD_LENGTH) and
-					((pos + (i * BOARD_SIZE) - i) % BOARD_SIZE) < (pos % BOARD_SIZE) and
-					(board[pos + (i * BOARD_SIZE) - i] == 1)):
-				nb_stone += 1
-			else:
-				dir_2 = 0
-		if (nb_stone >= 5):
-			return (1)
+		for d in dir:
+			tp = [int(pos / BOARD_SIZE), pos % BOARD_SIZE]
+			sum1 = self.sumLign(board, tp, d)
+			sum2 = self.sumLign(board, tp, [x * y for x, y in zip(d, [-1, -1])])
+			if sum1 + sum2 + 1 >= 5:
+				return 1
+		return 0
 
 	# Check Win
 	def check_win(self, player):
@@ -149,10 +87,13 @@ class GameBoard:
 			board = self.board_1
 		else:
 			board = self.board_2
-		for i in range(BOARD_LENGTH):
-			if (board[i] == 1 and self.check_line(board, i) == 1):
-					return (1)
-		return (0)
+
+		if self.lastmove != -1:
+			return self.check_line(board, self.lastmove)
+		# for i in range(BOARD_LENGTH):
+		# 	if board[i] == 1 and self.check_line(board, i) == 1:
+		# 			return (1)
+		return 0
 
 	def gameEnd(self):
 		if self.check_win(self.player_turn * -1) == 1: # si il y a un gagant
@@ -179,6 +120,7 @@ class GameBoard:
 			self.board_2[pos] = 1
 		self.player_turn *= -1
 		self.caseLeft -= 1
+		self.lastmove = pos
 
 	# To String
 	def to_string(self):
@@ -205,13 +147,13 @@ class GameBoard:
 		self.caseLeft = 361
 		for i in range(BOARD_LENGTH):
 			if (board[i] == "2"):
-				self.board_1[i] == 0
-				self.board_2[i] == 1
+				self.board_1[i] = 0
+				self.board_2[i] = 1
 				self.caseLeft -= 1
 			elif (board[i] == "1"):
-				self.board_1[i] == 1
-				self.board_2[i] == 0
+				self.board_1[i] = 1
+				self.board_2[i] = 0
 				self.caseLeft -= 1
 			else:
-				self.board_1[i] == 0
-				self.board_2[i] == 0
+				self.board_1[i] = 0
+				self.board_2[i] = 0
